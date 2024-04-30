@@ -18,6 +18,13 @@ jobs:
       - name: Download the subscribe
         run: |
           sh ./run.sh
+      - name: Commit Changes
+        run: |
+         git config --local user.email "actions@github.com"
+         git config --local user.name "GitHub Actions"
+         git add .
+         git commit -m "✔️ $(date '+%Y-%m-%d %H:%M:%S')"
+         git pull --rebase
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
